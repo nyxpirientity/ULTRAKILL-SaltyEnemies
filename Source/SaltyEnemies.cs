@@ -18,6 +18,8 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
             Log.Initialize(Logger);
             SaltyEnemy.Initialize();
             NyxLib.Cheats.ReadyForCheatRegistration += RegisterCheats;
+            Options.Initialize();
+            Options.Config = Config;
         }
 
         protected void Start()
@@ -27,6 +29,14 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
         protected void Update()
         {
 
+        }
+
+        protected void OnApplicationFocus(bool hasFocus)
+        {
+            if (hasFocus)
+            {
+                Config.Reload();
+            }
         }
 
         protected void LateUpdate()
