@@ -43,14 +43,14 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                 StyleRanks rank = (StyleRanks)(rankIndex);
                 radienceTier += rank switch
                 {
-                    StyleRanks.Destructive => Options.DestructiveRadianceTier,
-                    StyleRanks.Chaotic => Options.ChaoticRadianceTier,
-                    StyleRanks.Brutal => Options.BrutalRadianceTier,
-                    StyleRanks.Anarchic => Options.AnarchicRadianceTier,
-                    StyleRanks.Supreme => Options.SupremeRadianceTier,
-                    StyleRanks.SSadistic => Options.SSadisticRadianceTier,
-                    StyleRanks.SSSensoredStorm => Options.SSSensoredStormRadianceTier,
-                    StyleRanks.ULTRAKILL => Options.ULTRAKILLRadianceTier,
+                    StyleRanks.Destructive => Options.DestructiveRadianceTier.Value,
+                    StyleRanks.Chaotic => Options.ChaoticRadianceTier.Value,
+                    StyleRanks.Brutal => Options.BrutalRadianceTier.Value,
+                    StyleRanks.Anarchic => Options.AnarchicRadianceTier.Value,
+                    StyleRanks.Supreme => Options.SupremeRadianceTier.Value,
+                    StyleRanks.SSadistic => Options.SSadisticRadianceTier.Value,
+                    StyleRanks.SSSensoredStorm => Options.SSSensoredStormRadianceTier.Value,
+                    StyleRanks.ULTRAKILL => Options.ULTRAKILLRadianceTier.Value,
                     _ => throw new Exception("A great sadness has struck the city."),
                 };
                 
@@ -62,7 +62,7 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                     }
                     else
                     {
-                        radienceTier = Options.ULTRAKILLNoEnrageRadianceTier;
+                        radienceTier = Options.ULTRAKILLNoEnrageRadianceTier.Value;
                         enrageSoundTimer = UnityEngine.Random.value % 0.5f;
                     }
                 }
@@ -182,9 +182,9 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
         private void RequestBuffs(float radienceTier)
         {
             RadianceModifier.BaseEnabled = true;
-            RadianceModifier.SpeedEnabled = Options.SaltEffectSpeed;
-            RadianceModifier.HealthEnabled = Options.SaltEffectHealth;
-            RadianceModifier.DamageEnabled = Options.SaltEffectDamage;
+            RadianceModifier.SpeedEnabled = Options.SaltEffectSpeed.Value;
+            RadianceModifier.HealthEnabled = Options.SaltEffectHealth.Value;
+            RadianceModifier.DamageEnabled = Options.SaltEffectDamage.Value;
 
             RadianceModifier.BaseMod = 0.0f;
             RadianceModifier.DamageMod = radienceTier;
