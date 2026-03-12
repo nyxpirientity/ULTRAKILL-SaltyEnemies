@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using BepInEx;
 using Nyxpiri.ULTRAKILL.NyxLib;
+using System.IO;
 
 namespace Nyxpiri.ULTRAKILL.SaltyEnemies
 {
@@ -18,8 +19,13 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
             Log.Initialize(Logger);
             SaltyEnemy.Initialize();
             NyxLib.Cheats.ReadyForCheatRegistration += RegisterCheats;
-            Options.Initialize();
             Options.Config = Config;
+            Options.Initialize();
+            
+            if (!File.Exists(Config.ConfigFilePath))
+            {
+                Config.Save();
+            }
         }
 
         protected void Start()
