@@ -84,6 +84,11 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                     return;
                 }
                 
+                if (Eid.enemyType == EnemyType.Virtue)
+                {
+                    radienceTier *= 0.5f; // TODO: virtues are disproportionately powerful and unfun imo, should be more configurable in the future
+                }
+
                 if (!Eid.dead)
                 {
                     RequestBuffs(radienceTier);
@@ -223,20 +228,18 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                 {
                     enrageSoundTimer = -1.0f;
                     
-                    switch (Eid.enemyClass)
+                    switch (Enemy.Eid.GetSpeciesType())
                     {
-                        case EnemyClass.Husk:
+                        case EnemySpeciesType.Husk:
                             TryPlayHuskEnrageSound((UnityEngine.Random.value % 0.3f) + 0.9f, Eid.bigEnemy ? 0.8f : 0.6f);
                             break;
-                        case EnemyClass.Machine:
+                        case EnemySpeciesType.Machine:
                             TryPlayMachineEnrageSound(Eid.bigEnemy ? 1.05f : 1.3f, Eid.bigEnemy ? 1.4f : 1.1f);
                             break;
-                        case EnemyClass.Demon:
+                        case EnemySpeciesType.Demon:
                             TryPlayHuskEnrageSound((UnityEngine.Random.value % 0.3f) + 0.9f, Eid.bigEnemy ? 0.85f : 0.7f);
                             break;
-                        case EnemyClass.Divine:
-                            break;
-                        case EnemyClass.Other:
+                        default:
                             break;
                     }
                 }
