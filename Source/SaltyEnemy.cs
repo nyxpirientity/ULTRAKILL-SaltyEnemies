@@ -123,7 +123,7 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                 Log.Debug($"'[SaltyEnemy] playing husk enrage sound!");
                 var audioGo = GameObject.Instantiate(Assets.HuskEnrageSound_0, transform);
                 audioGo.GetComponent<AudioSource>().volume *= volume;
-                audioGo.GetComponent<AudioSource>().pitch = 0.3f * pitch;
+                audioGo.GetComponent<AudioSource>().SetPitch(0.3f * pitch);
                 audioGo.GetComponent<AudioDistortionFilter>().distortionLevel = 0.5f;
                 audioGo.SetActive(true);
                 PlayedEnrageSound = true;
