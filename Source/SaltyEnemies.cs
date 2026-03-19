@@ -10,7 +10,7 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
         public const string SaltyEnemies = "nyxpiri.salty-enemies";
     }
 
-    [BepInPlugin("com.nyxpiri.bepinex.plugins.ultrakill.salty-enemies", "Salty Enemies", "0.0.0.1")]
+    [BepInPlugin("nyxpiri.ultrakill.salty-enemies", "Salty Enemies", "0.0.0.1")]
     [BepInProcess("ULTRAKILL.exe")]
     public class SaltyEnemies: BaseUnityPlugin
     {
