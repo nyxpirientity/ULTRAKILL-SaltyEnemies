@@ -21,6 +21,7 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
             NyxLib.Cheats.ReadyForCheatRegistration += RegisterCheats;
             Options.Config = Config;
             Options.Initialize();
+            Assets.Initialize();
             
             if (!File.Exists(Config.ConfigFilePath))
             {
