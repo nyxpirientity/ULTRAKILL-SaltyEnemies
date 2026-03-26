@@ -37,8 +37,7 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                 Assert.IsNotNull(Enemy.PrefabStore);
                 Assert.IsNotNull(Enemy.PrefabStore.Prefab);
 
-                var prefabEid = Enemy.PrefabStore.Prefab.GetComponent<EnemyIdentifier>() ?? Enemy.PrefabStore.Prefab.GetComponentInChildren<EnemyIdentifier>();
-                var radienceTier = prefabEid.hasRadianceEffected ? prefabEid.radianceTier : 0.0f;
+                var radienceTier = 0.0f;
                 int rankIndex = StyleHUD.Instance.rankIndex;
                 StyleRanks rank = (StyleRanks)(rankIndex);
                 radienceTier += rank switch
@@ -210,6 +209,7 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
             Enemy = GetComponent<EnemyComponents>();
             Eid = Enemy.Eid;
             Enemy.Radiance.AddModifier(RadianceModifier);
+            RadianceModifier.BaseEnabled = false;
             RadianceModifier.SpeedEnabled = false;
             RadianceModifier.HealthEnabled = false;
             RadianceModifier.DamageEnabled = false;
