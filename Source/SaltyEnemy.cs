@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Nyxpiri.ULTRAKILL.NyxLib;
 using UnityEngine;
 
@@ -83,9 +84,9 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                     return;
                 }
                 
-                if (Eid.enemyType == EnemyType.Virtue)
+                if (Options.Nerfs.TryGetValue(Eid.enemyType, out var nerf))
                 {
-                    radienceTier *= 0.5f; // TODO: virtues are disproportionately powerful and unfun imo, should be more configurable in the future
+                    radienceTier *= nerf.Value;
                 }
 
                 if (!Eid.dead)

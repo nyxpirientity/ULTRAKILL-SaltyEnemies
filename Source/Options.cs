@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using BepInEx.Configuration;
 
@@ -17,6 +18,7 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
         public static ConfigEntry<bool> SaltEffectHealth = null;
         public static ConfigEntry<bool> SaltEffectSpeed = null;
         public static ConfigEntry<bool> SaltEffectDamage = null;
+        public static Dictionary<EnemyType, ConfigEntry<float>> Nerfs = new Dictionary<EnemyType, ConfigEntry<float>>(44);
 
         public static void Initialize()
         {
@@ -33,6 +35,25 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
             SaltEffectSpeed = Config.Bind($"Balance", "SaltEffectSpeed", true);
             SaltEffectHealth = Config.Bind($"Balance", "SaltEffectHealth", false);
             SaltEffectDamage = Config.Bind($"Balance", "SaltEffectDamage", false);
+
+            foreach (var getype in Enum.GetValues(typeof(EnemyType)))
+            {
+                float defaultVal = 1.0f;
+
+                var etype = (EnemyType)getype;
+
+                if (etype == EnemyType.Turret)
+                {
+                    defaultVal = 0.25f;
+                }
+
+                if (etype == EnemyType.Virtue)
+                {
+                    defaultVal = 0.5f;
+                }
+
+                Nerfs.Add(etype, Config.Bind($"Balance.EnemySpecific.{getype.ToString()}", "NerfScalar", defaultVal));
+            }
         }
         
         internal static ConfigFile Config = null;
