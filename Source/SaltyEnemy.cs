@@ -84,6 +84,8 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                     return;
                 }
                 
+                radienceTier -= 1.0f; // to accommodate for setting values as 1.5, 1.6, etc. rather than 0.5, 0.6, etc.
+
                 if (Options.Nerfs.TryGetValue(Eid.enemyType, out var nerf))
                 {
                     radienceTier *= nerf.Value;
