@@ -35,8 +35,6 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                 }
                 
                 Assert.IsNotNull(Enemy);
-                Assert.IsNotNull(Enemy.PrefabStore);
-                Assert.IsNotNull(Enemy.PrefabStore.Prefab);
 
                 var radienceTier = 0.0f;
                 int rankIndex = StyleHUD.Instance.rankIndex;
