@@ -33,7 +33,7 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                 {
                     return;
                 }
-                
+
                 Assert.IsNotNull(Enemy);
 
                 var radienceTier = 0.0f;
@@ -54,7 +54,15 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                 
                 if (rank is StyleRanks.ULTRAKILL)
                 {
-                    if (Eid.TryEnrage())
+                    
+                    bool enragedSuccessfully = false;
+                    
+                    if (!Eid.puppet)
+                    {
+                        enragedSuccessfully = Eid.TryEnrage();
+                    }
+
+                    if (enragedSuccessfully)
                     {
                         EnragedByUs = true;
                     }
