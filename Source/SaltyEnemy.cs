@@ -54,22 +54,24 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
                 
                 if (rank is StyleRanks.ULTRAKILL)
                 {
-                    
-                    bool enragedSuccessfully = false;
-                    
-                    if (!Eid.puppet)
+                    if (!Eid.IsEnraged())
                     {
-                        enragedSuccessfully = Eid.TryEnrage();
-                    }
+                        bool enragedSuccessfully = false;
+                        
+                        if (!Eid.puppet)
+                        {
+                            enragedSuccessfully = Eid.TryEnrage();
+                        }
 
-                    if (enragedSuccessfully)
-                    {
-                        EnragedByUs = true;
-                    }
-                    else
-                    {
-                        radienceTier = Options.ULTRAKILLNoEnrageRadianceTier.Value;
-                        enrageSoundTimer = UnityEngine.Random.value % 0.5f;
+                        if (enragedSuccessfully)
+                        {
+                            EnragedByUs = true;
+                        }
+                        else
+                        {
+                            radienceTier = Options.ULTRAKILLNoEnrageRadianceTier.Value;
+                            enrageSoundTimer = UnityEngine.Random.value % 0.5f;
+                        }
                     }
                 }
                 else
@@ -128,7 +130,7 @@ namespace Nyxpiri.ULTRAKILL.SaltyEnemies
 
             if (Assets.HuskEnrageSound_0 != null)
             {
-                Log.Debug($"'[SaltyEnemy] playing husk enrage sound!");
+                Log.Debug($"[SaltyEnemy] playing husk enrage sound!");
                 var audioGo = GameObject.Instantiate(Assets.HuskEnrageSound_0, transform);
                 audioGo.GetComponent<AudioSource>().volume *= volume;
                 audioGo.GetComponent<AudioSource>().SetPitch(0.3f * pitch);
